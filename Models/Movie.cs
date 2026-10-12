@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcMovie.Data;
@@ -68,4 +69,12 @@ public class Movie
     public string? Genre { get; set; }
     [Column(TypeName = "decimal(18, 2)")]
     public decimal Price { get; set; }
+}
+
+public class MovieGenreViewModel
+{
+    public List<Movie>? Movies { get; set; }
+    public SelectList? Genres { get; set; }
+    public string? MovieGenre { get; set; }
+    public string? SearchString { get; set; }
 }
