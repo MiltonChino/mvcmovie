@@ -20,7 +20,7 @@ namespace MvcMovie.Controllers
         }
 
        // GET: Movies
-public async Task<IActionResult> Index(string movieGenre, string searchString)
+public async Task<IActionResult> Index(int? releaseYear, string movieGenre, string searchString)
 {
     if (_context.Movie == null)
     {
@@ -44,13 +44,19 @@ public async Task<IActionResult> Index(string movieGenre, string searchString)
         movies = movies.Where(x => x.Genre == movieGenre);
     }
 
-    var movieGenreVM = new MovieGenreViewModel
+// Search by release date
+    if (releaseYear.HasValue)
+{
+    movies = movies.Where(m => m.ReleaseDate.Year == releaseYear.Value);
+}
+
+    var movieGenreReleaseDateVM = new MovieGenreReleaseDateViewModel
     {
         Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
         Movies = await movies.ToListAsync()
     };
 
-    return View(movieGenreVM);
+    return View(movieGenreReleaseDateVM);
 }
 
         // GET: Movies/Details/5

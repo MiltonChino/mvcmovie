@@ -90,11 +90,13 @@ public class Movie
     public string? Rating { get; set; }
 }
 
-public class MovieGenreViewModel
+// Search by release date added
+public class MovieGenreReleaseDateViewModel
 {
     public List<Movie>? Movies { get; set; }
     public SelectList? Genres { get; set; }
     public string? MovieGenre { get; set; }
+    public DateTime ReleaseYear { get; set; }
+    public string? MovieReleaseYear { get; set; }
     public string? SearchString { get; set; }
-    
 }
