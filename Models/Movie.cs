@@ -27,28 +27,32 @@ public static class SeedData
                     Title = "When Harry Met Sally",
                     ReleaseDate = DateTime.Parse("1989-2-12"),
                     Genre = "Romantic Comedy",
-                    Price = 7.99M
+                    Price = 7.99M,
+                    Rating = "R"
                 },
                 new Movie
                 {
                     Title = "Ghostbusters ",
                     ReleaseDate = DateTime.Parse("1984-3-13"),
                     Genre = "Comedy",
-                    Price = 8.99M
+                    Price = 8.99M,
+                    Rating = "PG"
                 },
                 new Movie
                 {
                     Title = "Ghostbusters 2",
                     ReleaseDate = DateTime.Parse("1986-2-23"),
                     Genre = "Comedy",
-                    Price = 9.99M
+                    Price = 9.99M,
+                    Rating = "PG"
                 },
                 new Movie
                 {
                     Title = "Rio Bravo",
                     ReleaseDate = DateTime.Parse("1959-4-15"),
                     Genre = "Western",
-                    Price = 3.99M
+                    Price = 3.99M,
+                    Rating = "PG"
                 }
             );
             context.SaveChanges();
@@ -69,6 +73,7 @@ public class Movie
     public string? Genre { get; set; }
     [Column(TypeName = "decimal(18, 2)")]
     public decimal Price { get; set; }
+     public string? Rating {  get; set; }
 }
 
 public class MovieGenreViewModel
@@ -77,4 +82,5 @@ public class MovieGenreViewModel
     public SelectList? Genres { get; set; }
     public string? MovieGenre { get; set; }
     public string? SearchString { get; set; }
+    
 }
